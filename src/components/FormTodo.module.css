@@ -1,0 +1,45 @@
+.todoForm {
+  display: flex;
+  flex-direction: row;
+  margin-top: -3.7rem;
+  padding: 2rem;
+  gap: 8px;
+}
+
+.todoForm input { 
+  border: none;
+  width: 100%;
+  background: var(--gray-500);
+  color: var(--gray-300);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.todoForm button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue-700);
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+
+  color: var(--gray-100);
+  font-weight: 700;
+  font-size: 14px;
+
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.todoForm button:hover {
+  background: var(--blue-500);
+}
+
+.todoForm svg {
+ font-size: 1.2rem;
+}
+
