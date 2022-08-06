@@ -1,8 +1,11 @@
 import styles from './ListTodo.module.css';
 import clipboard from '../assets/clipboard.svg';
+import { Task } from './Task';
 
 
 export function ListTodo() {
+
+  const todos = [1, 2]
   return(
     <div className={styles.content}>
       <header className={styles.header}>
@@ -14,11 +17,17 @@ export function ListTodo() {
         </div>
       </header>
       <main>
-        <div className={styles.emptList}>
-          <img src={clipboard} alt="clipboard" />
-          <span>Você ainda não tem tarefas cadastradas</span>
-          Crie tarefas e organize seus itens a fazer
-        </div>
+        { todos ? (
+          <Task/>
+        )
+        :
+        (
+          <div className={styles.emptList}>
+            <img src={clipboard} alt="clipboard" />
+            <span>Você ainda não tem tarefas cadastradas</span>
+            Crie tarefas e organize seus itens a fazer
+          </div>
+        )}
       </main>
     </div>
   )

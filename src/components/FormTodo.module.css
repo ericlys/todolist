@@ -1,8 +1,7 @@
 .todoForm {
   display: flex;
   flex-direction: row;
-  margin-top: -3.7rem;
-  padding: 2rem;
+  margin-top: -1.7rem;
   gap: 8px;
 }
 
