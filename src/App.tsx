@@ -22,7 +22,22 @@ function App() {
       title: todo,
       checked: false      
     }
-    setTodos([...todos, newTodo])
+    setTodos([ newTodo, ...todos])
+  }
+
+  function handleDelete(id: number) {
+    const newListRemovingTodo = todos.filter(todo => todo.id !== id);
+    setTodos(newListRemovingTodo);
+  }
+
+  function handleSwitchChecked(id: number) {
+    const newListWithTodoChecked = todos.map(todo => {
+      if(todo.id === id){
+        return {...todo, checked: !todo.checked};
+      }
+      return todo;
+    })
+    setTodos(newListWithTodoChecked);
   }
 
   return (
@@ -30,7 +45,7 @@ function App() {
       <Header/>
       <main className={styles.content}>
         <FormTodo handleNewTodo={handleNewTodo}/>
-        <ListTodo todos={todos}/>
+        <ListTodo todos={todos} onDelete={handleDelete} onSwitchChecked={handleSwitchChecked}/>
       </main>
     </div>
   )

@@ -10,10 +10,18 @@ interface Todo{
 
 interface ListTodoProps {
   todos: Todo[];
+  onDelete: (id: number) => void;
+  onSwitchChecked: (id: number) => void;
 }
 
-export function ListTodo({todos}: ListTodoProps) {
-  // console.log(todos)
+export function ListTodo({todos, onSwitchChecked, onDelete}: ListTodoProps) {
+
+  const tasksCompleted = todos.reduce((acc, todo) => {
+    if(todo.checked === true) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0)
 
   return(
     <div className={styles.content}>
@@ -25,8 +33,8 @@ export function ListTodo({todos}: ListTodoProps) {
         <div>
           <p>Concluídas</p>
           <span> 
-            { todos.length > 0 && `0 de `}
-            {todos.length}
+            { todos.length > 0 && `${tasksCompleted} de `}    
+            { todos.length}
           </span>
         </div>
       </header>
@@ -35,7 +43,14 @@ export function ListTodo({todos}: ListTodoProps) {
           (
             <div className={styles.list}>
               { todos.map(todo => (             
-                <Task key={todo.id} title={todo.title} checked={todo.checked}/>
+                <Task 
+                  key={todo.id} 
+                  id={todo.id}
+                  title={todo.title}
+                  checked={todo.checked} 
+                  onDelete={onDelete}
+                  onSwitchChecked={onSwitchChecked}
+                />
               ))}
             </div>
           )

@@ -42,7 +42,7 @@
 }
 
 .checkBox input[type="checkbox"] {
-visibility: hidden;
+  visibility: hidden;
 }
 
 .checkBox input[type="checkbox"]:checked + label {
@@ -55,11 +55,22 @@ visibility: hidden;
 }
 
 .container p {
+  width: 100%;
   font-size: 0.875rem;
   font-weight: 400;
 }
 
+.scratch {
+  text-decoration: line-through;
+  color: var(--gray-300);
+}
+
 .container svg {
   font-size: 0.875rem;
-  color: var(--gray--300)
+  color: var(--gray--300);
+  cursor: pointer;
+}
+
+.container svg:hover {
+  color: var(--red-500);
 }
