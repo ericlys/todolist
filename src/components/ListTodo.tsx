@@ -2,24 +2,43 @@ import styles from './ListTodo.module.css';
 import clipboard from '../assets/clipboard.svg';
 import { Task } from './Task';
 
+interface Todo{
+  id: number;
+  title: string;
+  checked: boolean;
+}
 
-export function ListTodo() {
+interface ListTodoProps {
+  todos: Todo[];
+}
 
-  const todos = [1, 2]
+export function ListTodo({todos}: ListTodoProps) {
+  // console.log(todos)
+
   return(
     <div className={styles.content}>
       <header className={styles.header}>
         <div>
-        <p>Tarefas criadas</p> <span>0</span>
+          <p>Tarefas criadas</p> 
+          <span>{todos.length}</span>
         </div>
         <div>
-          <p>Concluídas</p> <span>0</span>
+          <p>Concluídas</p>
+          <span> 
+            { todos.length > 0 && `0 de `}
+            {todos.length}
+          </span>
         </div>
       </header>
       <main>
-        { todos ? (
-          <Task/>
-        )
+        { todos.length > 0 ? 
+          (
+            <div className={styles.list}>
+              { todos.map(todo => (             
+                <Task key={todo.id} title={todo.title} checked={todo.checked}/>
+              ))}
+            </div>
+          )
         :
         (
           <div className={styles.emptList}>
